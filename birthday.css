@@ -1,0 +1,1594 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #721348 0%,
+            #3b0d2c 42%,
+            #120711 100%
+        );
+}
+
+
+/* =========================================
+   SCREEN
+========================================= */
+
+.screen {
+
+    width: 100%;
+
+    height: 100vh;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+}
+
+.screen.active {
+
+    display: flex;
+
+}
+
+.content {
+
+    width: 100%;
+
+    max-width: 850px;
+
+    padding: 20px;
+
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+h1 {
+
+    font-size:
+        clamp(30px, 6vw, 55px);
+
+    color: #ff9bc5;
+
+    text-shadow:
+        0 0 10px #ff4f9a,
+        0 0 25px #ff4f9a;
+
+    margin-bottom: 12px;
+
+}
+
+.subtitle {
+
+    color: #f4c4d8;
+
+    font-size: 17px;
+
+    margin-bottom: 30px;
+
+}
+
+.pink {
+
+    color: #ff6da9;
+
+}
+
+
+/* =========================================
+   TAP TEXT
+========================================= */
+
+.tap {
+
+    color: #eeb5cc;
+
+    font-size: 15px;
+
+    margin-top: 15px;
+
+}
+
+
+/* =========================================
+   GIFT BOX
+========================================= */
+
+.gift-container {
+
+    width: 200px;
+
+    height: 190px;
+
+    position: relative;
+
+    margin: 30px auto;
+
+    cursor: pointer;
+
+    animation:
+        giftBounce 2s infinite;
+
+    filter:
+        drop-shadow(
+            0 15px 25px
+            rgba(255,0,100,.4)
+        );
+
+}
+
+@keyframes giftBounce {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-15px);
+
+    }
+
+}
+
+
+/* Gift box */
+
+.gift-box {
+
+    position: absolute;
+
+    width: 140px;
+
+    height: 105px;
+
+    left: 30px;
+
+    top: 65px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3f78,
+            #d91450
+        );
+
+    border-radius: 6px;
+
+}
+
+
+/* Vertical ribbon */
+
+.gift-box::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 25px;
+
+    height: 100%;
+
+    left: 57px;
+
+    background: #ffd33d;
+
+}
+
+
+/* Gift lid */
+
+.gift-lid {
+
+    position: absolute;
+
+    width: 155px;
+
+    height: 32px;
+
+    left: 22px;
+
+    top: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff558b,
+            #e81757
+        );
+
+    border-radius: 6px;
+
+    z-index: 3;
+
+}
+
+
+/* Horizontal ribbon */
+
+.gift-lid::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 25px;
+
+    height: 100%;
+
+    left: 65px;
+
+    background: #ffd33d;
+
+}
+
+
+/* Gift bow */
+
+.bow {
+
+    position: absolute;
+
+    top: 23px;
+
+    left: 68px;
+
+    z-index: 5;
+
+}
+
+.bow-left,
+.bow-right {
+
+    width: 45px;
+
+    height: 30px;
+
+    background: #ffd33d;
+
+    position: absolute;
+
+    border-radius:
+        50%
+        50%
+        50%
+        10%;
+
+}
+
+.bow-left {
+
+    right: 5px;
+
+    transform:
+        rotate(25deg);
+
+}
+
+.bow-right {
+
+    left: 5px;
+
+    transform:
+        rotate(-25deg);
+
+}
+
+.bow-center {
+
+    width: 20px;
+
+    height: 20px;
+
+    background: #ffc400;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    left: 35px;
+
+    top: 7px;
+
+}
+
+
+/* =========================================
+   PIN SCREEN
+========================================= */
+
+.lock {
+
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+}
+
+.pin-dots {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    margin: 25px;
+
+}
+
+.pin-dots span {
+
+    width: 14px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        #ff7caf;
+
+}
+
+.pin-dots span.active {
+
+    background: #ff5797;
+
+    box-shadow:
+        0 0 15px
+        #ff5797;
+
+}
+
+
+/* PIN keypad */
+
+.keypad {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 65px);
+
+    gap: 12px;
+
+    justify-content: center;
+
+}
+
+.keypad button {
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,160,200,.3);
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.keypad button:hover {
+
+    background:
+        rgba(255,80,160,.35);
+
+    transform: scale(1.08);
+
+}
+
+#pinMessage {
+
+    margin-top: 18px;
+
+    min-height: 20px;
+
+    color: #ffb4d2;
+
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.primary,
+.outline {
+
+    padding:
+        13px
+        24px;
+
+    border-radius: 30px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    margin: 8px;
+
+    font-size: 14px;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+
+}
+
+.primary {
+
+    border: none;
+
+    color: #270818;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4f9a,
+            #ff8abb
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(255,79,154,.3);
+
+}
+
+.primary:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(255,79,154,.5);
+
+}
+
+.outline {
+
+    color: #ffd3e4;
+
+    background:
+        rgba(255,255,255,.06);
+
+    border:
+        1px solid
+        #d783a5;
+
+}
+
+.outline:hover {
+
+    background:
+        rgba(255,100,160,.15);
+
+}
+
+button:disabled {
+
+    opacity: .35;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+/* =========================================
+   BIRTHDAY STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+
+    margin:
+        25px auto;
+
+    max-width: 650px;
+
+}
+
+.stats strong {
+
+    display: block;
+
+    font-size: 35px;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 10px
+        rgba(255,100,170,.5);
+
+}
+
+.stats small {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #d69bb4;
+
+}
+
+
+/* =========================================
+   CAKE
+========================================= */
+
+.cake {
+
+    width: 240px;
+
+    height: 220px;
+
+    position: relative;
+
+    margin:
+        30px auto;
+
+}
+
+
+/* Cake layers */
+
+.cake-bottom,
+.cake-middle,
+.cake-top {
+
+    position: absolute;
+
+    left: 10%;
+
+    width: 80%;
+
+    border-radius:
+        18px
+        18px
+        10px
+        10px;
+
+}
+
+
+/* Bottom */
+
+.cake-bottom {
+
+    height: 70px;
+
+    bottom: 5px;
+
+    background:
+        linear-gradient(
+            #fff5fa,
+            #e9c7d7
+        );
+
+    box-shadow:
+        0 10px 20px
+        rgba(0,0,0,.3);
+
+}
+
+
+/* Middle */
+
+.cake-middle {
+
+    height: 60px;
+
+    bottom: 65px;
+
+    background:
+        linear-gradient(
+            #ffffff,
+            #f4dce7
+        );
+
+}
+
+
+/* Top */
+
+.cake-top {
+
+    height: 50px;
+
+    bottom: 115px;
+
+    background:
+        linear-gradient(
+            #ffd2e4,
+            #f4a9c8
+        );
+
+}
+
+
+/* Candles */
+
+.candle {
+
+    position: absolute;
+
+    bottom: 158px;
+
+    width: 16px;
+
+    height: 55px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #ff73aa 0 5px,
+            #ffd1e3 5px 10px
+        );
+
+    border-radius: 5px;
+
+    z-index: 5;
+
+}
+
+.candle1 {
+
+    left: 68px;
+
+}
+
+.candle2 {
+
+    left: 112px;
+
+}
+
+.candle3 {
+
+    left: 156px;
+
+}
+
+
+/* Flame */
+
+.candle span {
+
+    position: absolute;
+
+    top: -27px;
+
+    font-size: 22px;
+
+    animation:
+        flicker .5s
+        infinite alternate;
+
+}
+
+@keyframes flicker {
+
+    from {
+
+        transform:
+            scale(1)
+            rotate(-3deg);
+
+    }
+
+    to {
+
+        transform:
+            scale(1.2)
+            rotate(3deg);
+
+    }
+
+}
+
+.blown span {
+
+    display: none;
+
+}
+
+
+/* =========================================
+   PHOTOS
+========================================= */
+
+.photo-card {
+
+    width:
+        min(330px, 90vw);
+
+    margin:
+        30px auto;
+
+    padding:
+        12px 12px 25px;
+
+    background: white;
+
+    color: #542c3f;
+
+    transform:
+        rotate(-2deg);
+
+    box-shadow:
+        0 20px 40px
+        rgba(0,0,0,.5);
+
+    transition:
+        transform .3s;
+
+}
+
+.photo-card:hover {
+
+    transform:
+        rotate(0deg)
+        scale(1.02);
+
+}
+
+.photo-card img {
+
+    width: 100%;
+
+    height: 330px;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+.photo-card p {
+
+    font-family: cursive;
+
+    font-size: 18px;
+
+    margin-top: 12px;
+
+}
+
+.photo-dots span {
+
+    display: inline-block;
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #9b5475;
+
+    margin: 5px;
+
+}
+
+.photo-dots span.active {
+
+    background: #ff79af;
+
+    box-shadow:
+        0 0 8px
+        #ff79af;
+
+}
+
+
+/* =========================================
+   BEAUTIFUL BALLOONS
+========================================= */
+
+.balloons {
+
+    width:
+        min(650px, 95vw);
+
+    min-height: 360px;
+
+    margin:
+        35px auto;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+
+    gap:
+        35px 45px;
+
+    position: relative;
+
+    padding:
+        20px 30px;
+
+}
+
+
+/* Balloon */
+
+.balloon {
+
+    width: 82px;
+
+    height: 105px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    border-radius:
+        50%
+        50%
+        48%
+        48%;
+
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
+
+    box-shadow:
+
+        inset -14px -12px 20px
+        rgba(0,0,0,.18),
+
+        inset 10px 8px 15px
+        rgba(255,255,255,.30),
+
+        0 8px 18px
+        rgba(0,0,0,.25);
+
+    animation:
+        balloonFloat 3s
+        ease-in-out infinite;
+
+}
+
+
+/* Balloon shine */
+
+.balloon {
+
+    overflow: visible;
+
+}
+
+
+/* Balloon string */
+
+.balloon::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 103px;
+
+    left: 50%;
+
+    width: 1.5px;
+
+    height: 110px;
+
+    background:
+        rgba(255,255,255,.55);
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+/* Balloon knot */
+
+.balloon::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -7px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: 0;
+
+    height: 0;
+
+    border-left:
+        7px solid transparent;
+
+    border-right:
+        7px solid transparent;
+
+    border-top:
+        10px solid currentColor;
+
+}
+
+
+/* Balloon 1 */
+
+.b1 {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 23%,
+            rgba(255,255,255,.95) 0 5%,
+            transparent 7%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ff8fbd,
+            #ed397c
+        );
+
+    color: #ed397c;
+
+    animation-delay: 0s;
+
+}
+
+
+/* Balloon 2 */
+
+.b2 {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 23%,
+            rgba(255,255,255,.95) 0 5%,
+            transparent 7%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ffe17a,
+            #f4ae28
+        );
+
+    color: #f4ae28;
+
+    animation-delay: .3s;
+
+}
+
+
+/* Balloon 3 */
+
+.b3 {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 23%,
+            rgba(255,255,255,.95) 0 5%,
+            transparent 7%
+        ),
+
+        linear-gradient(
+            135deg,
+            #80e7ff,
+            #299bd7
+        );
+
+    color: #299bd7;
+
+    animation-delay: .6s;
+
+}
+
+
+/* Balloon 4 */
+
+.b4 {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 23%,
+            rgba(255,255,255,.95) 0 5%,
+            transparent 7%
+        ),
+
+        linear-gradient(
+            135deg,
+            #c29cff,
+            #7950d9
+        );
+
+    color: #7950d9;
+
+    animation-delay: .9s;
+
+}
+
+
+/* Balloon 5 */
+
+.b5 {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 23%,
+            rgba(255,255,255,.95) 0 5%,
+            transparent 7%
+        ),
+
+        linear-gradient(
+            135deg,
+            #a8f58e,
+            #4bbb67
+        );
+
+    color: #4bbb67;
+
+    animation-delay: 1.2s;
+
+}
+
+
+/* Balloon 6 */
+
+.b6 {
+
+    background:
+
+        radial-gradient(
+            circle at 30% 23%,
+            rgba(255,255,255,.95) 0 5%,
+            transparent 7%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ff9c9c,
+            #ed4f67
+        );
+
+    color: #ed4f67;
+
+    animation-delay: 1.5s;
+
+}
+
+
+/* =========================================
+   BALLOON FLOAT
+========================================= */
+
+@keyframes balloonFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-2deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-18px)
+            rotate(3deg);
+
+    }
+
+}
+
+
+/* =========================================
+   BALLOON HOVER
+========================================= */
+
+.balloon:hover {
+
+    transform:
+        scale(1.12)
+        rotate(5deg);
+
+    filter:
+        brightness(1.1);
+
+}
+
+
+/* =========================================
+   BALLOON POP
+========================================= */
+
+.balloon.pop {
+
+    animation:
+        balloonPop .35s forwards;
+
+}
+
+
+@keyframes balloonPop {
+
+    0% {
+
+        transform:
+            scale(1);
+
+        opacity: 1;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.35);
+
+        opacity: .8;
+
+    }
+
+    100% {
+
+        transform:
+            scale(0);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   WISH
+========================================= */
+
+#wish {
+
+    min-height: 30px;
+
+    color: #ffd0e1;
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+    margin-top: 10px;
+
+    text-shadow:
+        0 0 10px
+        rgba(255,100,170,.5);
+
+}
+
+
+/* =========================================
+   BALLOON COUNTER
+========================================= */
+
+#balloonCounter {
+
+    color: #dca8c0;
+
+    font-size: 14px;
+
+    margin:
+        8px 0;
+
+}
+
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter-icon {
+
+    font-size: 50px;
+
+    margin-bottom: 10px;
+
+}
+
+.letter {
+
+    max-width: 650px;
+
+    min-height: 280px;
+
+    margin:
+        25px auto;
+
+    padding: 30px;
+
+    border:
+        1px solid
+        #9c4c70;
+
+    border-radius: 20px;
+
+    background:
+        rgba(20,8,17,.8);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.5);
+
+    text-align: left;
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+.letter p {
+
+    color: #ffd2e1;
+
+    font-family: cursive;
+
+    font-size: 20px;
+
+    line-height: 1.8;
+
+    white-space: pre-line;
+
+}
+
+
+/* =========================================
+   FINAL SCREEN
+========================================= */
+
+.final-gift {
+
+    font-size: 100px;
+
+    animation:
+        giftBounce 1.5s infinite;
+
+}
+
+.fireworks {
+
+    font-size: 35px;
+
+    margin: 30px;
+
+    animation:
+        fireworkPulse 1.5s
+        infinite alternate;
+
+}
+
+@keyframes fireworkPulse {
+
+    from {
+
+        transform:
+            scale(.9);
+
+    }
+
+    to {
+
+        transform:
+            scale(1.1);
+
+    }
+
+}
+
+
+/* =========================================
+   FLOATING HEARTS
+========================================= */
+
+#hearts {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 100;
+
+}
+
+.heart {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    animation:
+        heartFloat 6s
+        linear forwards;
+
+}
+
+@keyframes heartFloat {
+
+    to {
+
+        transform:
+            translateY(-110vh)
+            rotate(30deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+
+    .content {
+
+        padding: 10px;
+
+    }
+
+
+    h1 {
+
+        font-size:
+            clamp(28px, 9vw, 40px);
+
+    }
+
+
+    .subtitle {
+
+        font-size: 14px;
+
+    }
+
+
+    /* Stats */
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 15px;
+
+    }
+
+
+    .stats strong {
+
+        font-size: 28px;
+
+    }
+
+
+    /* Cake */
+
+    .cake {
+
+        transform:
+            scale(.85);
+
+        margin-top: 15px;
+
+        margin-bottom: 10px;
+
+    }
+
+
+    /* Photos */
+
+    .photo-card {
+
+        width:
+            min(280px, 90vw);
+
+    }
+
+
+    .photo-card img {
+
+        height: 280px;
+
+    }
+
+
+    /* Balloons */
+
+    .balloons {
+
+        width: 100%;
+
+        min-height: 300px;
+
+        gap:
+            30px 22px;
+
+        padding: 10px;
+
+        margin:
+            20px auto;
+
+    }
+
+
+    .balloon {
+
+        width: 65px;
+
+        height: 85px;
+
+    }
+
+
+    .balloon::before {
+
+        top: 83px;
+
+        height: 75px;
+
+    }
+
+
+    /* Letter */
+
+    .letter {
+
+        padding: 20px;
+
+        min-height: 240px;
+
+    }
+
+
+    .letter p {
+
+        font-size: 17px;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* Final */
+
+    .final-gift {
+
+        font-size: 80px;
+
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL SCREEN
+========================================= */
+
+@media(max-width:380px) {
+
+    .balloons {
+
+        gap:
+            25px 15px;
+
+    }
+
+    .balloon {
+
+        width: 58px;
+
+        height: 78px;
+
+    }
+
+    .balloon::before {
+
+        top: 76px;
+
+    }
+
+    .keypad {
+
+        grid-template-columns:
+            repeat(3, 58px);
+
+    }
+
+    .keypad button {
+
+        height: 50px;
+
+    }
+
+}
