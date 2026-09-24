@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Surprise 🎂</title>
+
+    <link rel="stylesheet" href="birthday.css">
+</head>
+
+<body>
+    <audio id="birthdaySong" loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+    <!-- Floating hearts -->
+    <div id="hearts"></div>
+
+
+    <!-- =========================
+         SCREEN 1 - GIFT
+    ========================== -->
+
+    <section class="screen active" id="giftScreen">
+
+        <div class="content">
+
+            <h1>A surprise awaits you... ✨</h1>
+
+            <p class="subtitle">
+                Something special just for you 💖
+            </p>
+
+            <div class="gift-container" onclick="openGift()">
+
+                <div class="bow">
+                    <div class="bow-left"></div>
+                    <div class="bow-right"></div>
+                    <div class="bow-center"></div>
+                </div>
+
+                <div class="gift-lid"></div>
+
+                <div class="gift-box"></div>
+
+            </div>
+
+            <p class="tap">
+                🎁 Tap the gift to open
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SCREEN 2 - PIN
+    ========================== -->
+
+    <section class="screen" id="pinScreen">
+
+        <div class="content">
+
+            <div class="lock">🔐</div>
+
+            <h1>Enter the secret code 💕</h1>
+
+            <p class="subtitle">
+                A little secret before the surprise...
+            </p>
+
+            <div class="pin-dots">
+
+                <span id="dot1"></span>
+                <span id="dot2"></span>
+                <span id="dot3"></span>
+                <span id="dot4"></span>
+
+            </div>
+
+
+            <div class="keypad">
+
+                <button onclick="enterPin('1')">1</button>
+                <button onclick="enterPin('2')">2</button>
+                <button onclick="enterPin('3')">3</button>
+
+                <button onclick="enterPin('4')">4</button>
+                <button onclick="enterPin('5')">5</button>
+                <button onclick="enterPin('6')">6</button>
+
+                <button onclick="enterPin('7')">7</button>
+                <button onclick="enterPin('8')">8</button>
+                <button onclick="enterPin('9')">9</button>
+
+                <button></button>
+                <button onclick="enterPin('0')">0</button>
+                <button onclick="deletePin()">⌫</button>
+
+            </div>
+
+            <p id="pinMessage"></p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SCREEN 3 - BIRTHDAY
+    ========================== -->
+
+    <section class="screen" id="birthdayScreen">
+
+        <div class="content">
+
+            <h1>
+                Happy Birthday
+                <span class="pink">My Love</span> 🎂
+            </h1>
+
+            <p class="subtitle">
+                The world has been better since you were born 💗
+            </p>
+
+
+           <div class="stats">
+
+    <div>
+        <strong id="years">26</strong>
+        <small>YEARS</small>
+    </div>
+
+    <div>
+        <strong id="days">00</strong>
+        <small>DAYS</small>
+    </div>
+
+    <div>
+        <strong id="hours">00</strong>
+        <small>HOURS</small>
+    </div>
+
+    <div>
+        <strong id="minutes">00</strong>
+        <small>MINUTES</small>
+    </div>
+
+    <div>
+        <strong id="seconds">00</strong>
+        <small>SECONDS</small>
+    </div>
+
+</div>
+
+
+            <!-- Cake -->
+
+            <div class="cake">
+
+                <div class="candle candle1">
+                    <span>🔥</span>
+                </div>
+
+                <div class="candle candle2">
+                    <span>🔥</span>
+                </div>
+
+                <div class="candle candle3">
+                    <span>🔥</span>
+                </div>
+
+                <div class="cake-top"></div>
+
+                <div class="cake-middle"></div>
+
+                <div class="cake-bottom"></div>
+
+            </div>
+
+
+            <p>
+                Tap the button to blow the candles 🎂
+            </p>
+
+            <button class="primary" onclick="blowCandles()">
+                💨 Blow Candles
+            </button>
+
+            <br>
+
+            <button
+                class="outline"
+                id="cakeNext"
+                onclick="showScreen('memoryScreen')"
+                disabled>
+                Next Surprise 🎁
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SCREEN 4 - MEMORIES
+    ========================== -->
+
+    <section class="screen" id="memoryScreen">
+
+        <div class="content">
+
+            <h1>Cute Memories 📸</h1>
+
+            <p class="subtitle">
+                Some beautiful moments 💕
+            </p>
+
+
+            <div class="photo-card">
+
+                <img
+                    id="memoryImage"
+                    src="asset/birthdat1.jpg"
+                    alt="Memory">
+                <p id="memoryText">
+                    A beautiful memory ✨
+                </p>
+
+            </div>
+
+
+            <div class="photo-dots">
+
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <button class="primary" onclick="nextMemory()">
+                Next Memory ➜
+            </button>
+
+            <br>
+
+            <button
+                class="outline"
+                onclick="showScreen('balloonScreen')">
+
+                Next Surprise 🎁
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SCREEN 5 - BALLOONS
+    ========================== -->
+
+    <section class="screen" id="balloonScreen">
+
+        <div class="content">
+
+            <h1>Pop the Wishes 🎈</h1>
+
+            <p class="subtitle">
+                Pop the balloons to reveal wishes
+            </p>
+
+
+            <div class="balloons">
+
+                <div class="balloon b1" onclick="popBalloon(this,0)">
+                </div>
+
+                <div class="balloon b2" onclick="popBalloon(this,1)">
+                </div>
+
+                <div class="balloon b3" onclick="popBalloon(this,2)">
+                </div>
+
+                <div class="balloon b4" onclick="popBalloon(this,3)">
+                </div>
+
+                <div class="balloon b5" onclick="popBalloon(this,4)">
+                </div>
+
+                <div class="balloon b6" onclick="popBalloon(this,5)">
+                </div>
+
+            </div>
+
+
+            <p id="wish">
+                Your wishes are waiting... 💗
+            </p>
+
+            <p id="balloonCounter">
+                Popped 0/6
+            </p>
+
+
+            <button
+                class="primary"
+                id="balloonNext"
+                onclick="showScreen('letterScreen')"
+                disabled>
+
+                Continue ✨
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SCREEN 6 - LETTER
+    ========================== -->
+
+    <section class="screen" id="letterScreen">
+
+        <div class="content">
+
+            <div class="letter-icon">
+                💌
+            </div>
+
+            <h1>A Letter Just For You</h1>
+
+
+            <div class="letter">
+
+                <p id="letterText"></p>
+
+            </div>
+
+
+            <button
+                class="primary"
+                onclick="showScreen('finalScreen')">
+
+                One Last Surprise ✨
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SCREEN 7 - FINAL
+    ========================== -->
+
+    <section class="screen" id="finalScreen">
+
+        <div class="content">
+
+            <div class="final-gift">
+                🎁
+            </div>
+
+            <h1>HAPPY BIRTHDAY! 🎂</h1>
+
+            <p class="subtitle">
+
+                May all your dreams come true.
+                <br>
+                Keep smiling and keep shining! ❤️
+
+            </p>
+
+            <div class="fireworks">
+                🎆 ✨ 🎆 ✨ 🎆
+            </div>
+
+            <button class="primary" onclick="location.reload()">
+                🔄 Replay Surprise
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <script src="birthday.js"></script>
+
+</body>
+</html>
